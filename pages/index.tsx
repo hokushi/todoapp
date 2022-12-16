@@ -26,6 +26,10 @@ const Index = () => {
     localStorage.setItem("todo", JSON.stringify(newTodoList));
   };
 
+  const check=()=>{
+    console.log(todoList)
+  }
+
   return (
     <>
       <div className="text-6xl flex justify-center mt-10">
@@ -120,6 +124,7 @@ const Index = () => {
             </tbody>
           </table>
         </div>
+        <button onClick={check}>check</button>
     </>
   )
 };
