@@ -1,8 +1,21 @@
 import React, { useState, useEffect } from "react";
+import { v4 as uuid } from "uuid";
 
 const Index = () => {
   const [todo, setTodo] = useState("");
   const [todoList, setTodoList] = useState([]);
+
+  const addTodo = () => {
+    const todoObject:{id:string,todo:string} = {
+      id: uuid(),
+      todo: todo,
+    };
+    console.log(todoObject);
+    const newTodoList:any = [...todoList, todoObject];
+    setTodoList(newTodoList);
+    localStorage.setItem("todo", JSON.stringify(newTodoList));
+    setTodo("");
+  };
 
   return (
     <>
@@ -39,6 +52,7 @@ const Index = () => {
           />
           <button
             type="submit"
+            onClick={addTodo}
             className="text-white absolute right-2.5 bottom-2.5 bg-black hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
           >
             送信
@@ -67,16 +81,19 @@ const Index = () => {
               </tr>
             </thead>
             <tbody>
+            {todoList.map((onetodo:{id:string,todo:string}, index:number) => {
+              return(
                   <tr
+                    key={index}
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                   >
                     <td
                       scope="row"
                       className="py-4 px-4 flex justify-center bg-black font-medium text-white dark:text-black"
                     >
-                      1
+                      {index}
                     </td>
-                    <td className="py-2 px-4">aa</td>
+                    <td className="py-2 px-4">{onetodo.todo}</td>
                     <td className="py-2 px-4">
                       aa
                     </td>
@@ -84,6 +101,7 @@ const Index = () => {
                       aa
                     </td>
                   </tr>
+              );})}
             </tbody>
           </table>
         </div>
