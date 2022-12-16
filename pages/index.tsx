@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
+import Button from "../components/button";
+
 
 const Index = () => {
   const [todo, setTodo] = useState("");
@@ -10,11 +12,18 @@ const Index = () => {
       id: uuid(),
       todo: todo,
     };
-    console.log(todoObject);
     const newTodoList:any = [...todoList, todoObject];
     setTodoList(newTodoList);
     localStorage.setItem("todo", JSON.stringify(newTodoList));
     setTodo("");
+  };
+
+  const delate = (todoID:string) => {
+    const newTodoList = todoList.filter((todoItem) => {
+      return todoItem.id !== todoID;
+    });
+    setTodoList(newTodoList);
+    localStorage.setItem("todo", JSON.stringify(newTodoList));
   };
 
   return (
@@ -98,7 +107,13 @@ const Index = () => {
                       aa
                     </td>
                     <td className="py-2 px-4">
-                      aa
+                    <Button
+                        func={() => {
+                          delate(onetodo.id);
+                        }}
+                        title="削除"
+                        style="bg-black px-4 py-2 text-white rounded-lg"
+                      />
                     </td>
                   </tr>
               );})}
