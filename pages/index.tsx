@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 import Button from "../components/button";
+import Link from "next/link";
+
 
 
 const Index = () => {
   const [todo, setTodo] = useState("");
   const [todoList, setTodoList] = useState([]);
+
+  useEffect(() => {
+    const realTodoList = JSON.parse(localStorage.getItem("todo"));
+      setTodoList(realTodoList);
+    }, []);
 
   const addTodo = () => {
     const todoObject:{id:string,todo:string} = {
@@ -108,10 +115,16 @@ const Index = () => {
                     </td>
                     <td className="py-2 px-4">{onetodo.todo}</td>
                     <td className="py-2 px-4">
-                      aa
+                      <Link href={onetodo.id}>
+                        <Button
+                          title="編集"
+                          style="bg-black px-4 p-2 text-white rounded-lg"
+                          func                       
+                        />
+                      </Link>
                     </td>
                     <td className="py-2 px-4">
-                    <Button
+                      <Button
                         func={() => {
                           delate(onetodo.id);
                         }}
