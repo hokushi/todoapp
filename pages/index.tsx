@@ -104,11 +104,7 @@ const Index = () => {
                       <Link href={onetodo.id}>
                         <Button
                           title="編集"
-                          style="bg-black px-4 p-2 text-white rounded-lg"
-                          /* こことりあえず違うが入れておく */
-                          func={() => {
-                            delate(onetodo.id);
-                          }}                   
+                          style="bg-black px-4 p-2 text-white rounded-lg"                 
                         />
                       </Link>
                     </td>

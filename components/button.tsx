@@ -1,4 +1,4 @@
-const Button = ({ func = () => {}, title, style }:{func:any,title:string,style:any}) => {
+const Button = ({ func = () => {}, title, style }) => {
     return (
       <button onClick={func} className={style}>
         {title}
