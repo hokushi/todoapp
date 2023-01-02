@@ -2,17 +2,23 @@ import React, { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import Button from "../components/button";
+import Loading from "../components/loading";
 import Link from "next/link";
+
 
 
 const Index = () => {
   const [todo, setTodo] = useState("");
   const [todoList, setTodoList] = useState([]);
+  const [loading, setLoading] = useState(false);
+
 
   useEffect(() => {
-    const realTodoList = JSON.parse(localStorage.getItem("todo"));
-      setTodoList(realTodoList);
-    }, []);
+    const existingTodoList = JSON.parse(localStorage.getItem("todo"));
+    if (existingTodoList) {
+      setTodoList(existingTodoList);
+    }
+  }, []);
 
   const addTodo = () => {
     const todoObject:{id:string,todo:string} = {
@@ -26,17 +32,22 @@ const Index = () => {
   };
 
   const delate = (todoID:string) => {
+    setLoading(true);
     const newTodoList = todoList.filter((todoItem) => {
       return todoItem.id !== todoID;
     });
     setTodoList(newTodoList);
     localStorage.setItem("todo", JSON.stringify(newTodoList));
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   };
 
   const check=()=>{
     console.log(todoList)
   }
 
+  if (!loading) {
   return (
     <>
       <div className="text-6xl flex justify-center mt-10">
@@ -125,6 +136,9 @@ const Index = () => {
         <button onClick={check}>check</button>
     </>
   )
+}else {
+  return <Loading />;
+}
 };
 
 export default Index;
