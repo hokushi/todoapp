@@ -86,13 +86,13 @@ const Index = () => {
                 >
                   番号
                 </th>
-                <th scope="col" className="py-3 px-6">
+                <th scope="col" className="py-3 px-6 w-7/12 ">
                   Title
                 </th>
-                <th scope="col" className="py-3 px-6">
+                <th scope="col" className="py-3 px-6 w-2/12">
                   編集
                 </th>
-                <th scope="col" className="py-3 px-6">
+                <th scope="col" className="py-3 px-6 w-2/12 ">
                   削除
                 </th>
               </tr>
