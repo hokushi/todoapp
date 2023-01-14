@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import BaseLayout from "../components/baselayout";
+
 
 const Edit = () => {
 
@@ -33,7 +35,9 @@ const Edit = () => {
 
     return (
         <>
-          <div className="relative w-4/12 mx-auto mt-10">
+          <BaseLayout>
+          <div className="relative w-4/12 mx-auto mt-20 mb-96">
+            <div className="font-bold">編集後のスケジュール</div>
             <input
               type="search"
               value={todo}
@@ -55,6 +59,7 @@ const Edit = () => {
             </Link>
           </div>
           <button onClick={check}>check</button>
+          </BaseLayout>
         </>
       );
     };
