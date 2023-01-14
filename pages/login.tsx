@@ -19,25 +19,24 @@ const Login=()=>{
     }
 
     return(
-        <div className="bg-gray-900">
         <div className="mx-10 lg:mx-auto lg:max-w-62rem w-3/5">
         <div className="mx-auto w-11/12 py-4">
-          <div className="w-full bg-black border border-gray-300 border-shadow shadow-lg">
-            <div className="text-center font-medium text-white text-4xl py-4 border-b border-gray-300">
+          <div className="w-full border-2 border-gray-500 border-shadow shadow-lg">
+            <div className="text-center font-medium text-5xl py-4 border-b-2 border-gray-500">
               アカウントログイン
             </div>
 
             <form className="mx-auto w-10/12 py-10">
-              <div className="pb-6 text-white">
+              <div className="pb-6">
                 パスワードを忘れた方：リセットは
                 <span className="text-blue-500">
                   <Link href="">こちら</Link>
                 </span>
               </div>
-              <div className="font-medium text-xl mb-2 text-white">メールアドレス</div>
+              <div className="font-medium text-xl mb-2">メールアドレス</div>
               <div className="flex text-xl mb-4">
                 <div className="pt-1">
-                  <EnvelopeIcon className="text-white w-6 h-6" />
+                  <EnvelopeIcon className=" w-6 h-6" />
                 </div>
 
                 <input
@@ -49,9 +48,9 @@ const Login=()=>{
                   className="border border-gray-500 px-3 w-full"
                 />
               </div>
-              <div className="text-white font-medium text-xl mb-2">パスワード</div>
+              <div className=" font-medium text-xl mb-2">パスワード</div>
               <div className="flex text-xl mb-4">
-                <div className="pt-1 text-white">
+                <div className="pt-1">
                   <LockClosedIcon className="w-6 h-6" />
                 </div>
                 <input
@@ -75,7 +74,6 @@ const Login=()=>{
             </form>
           </div>
         </div>
-      </div>
       </div>
     );
 };
