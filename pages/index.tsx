@@ -4,8 +4,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import Button from "../components/button";
 import Loading from "../components/loading";
 import Link from "next/link";
-
-
+import BaseLayout from "../components/baselayout";
 
 const Index = () => {
   const [todo, setTodo] = useState("");
@@ -50,6 +49,7 @@ const Index = () => {
   if (!loading) {
   return (
     <>
+      <BaseLayout>
       <div className="text-6xl flex justify-center mt-10">
         TODOアプリ
       </div>
@@ -134,6 +134,7 @@ const Index = () => {
           </table>
         </div>
         <button onClick={check}>check</button>
+        </BaseLayout>
     </>
   )
 }else {
